@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - ZTH_16@localhost" uuid="3981a387-d3b1-4a7a-8c3d-ba4a7bee45de">
+    <database-info product="MySQL" version="5.6.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="zth_16"/>
+    <table name="departments" schema="" catalog="zth_16" type="TABLE">
+      <column name="DEPARTMENT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="DEPARTMENT_NAME" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LOCATION_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="DEPARTMENT_ID"/>
+      <foreign-key name="departments_ibfk_1" columns="LOCATION_ID" ref-table="locations" ref-schema="" ref-catalog="zth_16" ref-columns="LOCATION_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="employees_ibfk_2" table="employees" schema="" catalog="zth_16" columns="DEPARTMENT_ID"/>
+    </table>
+    <table name="employees" schema="" catalog="zth_16" type="TABLE">
+      <column name="EMPLOYEE_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="FIRST_NAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_NAME" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PHONE_NUMBER" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="HIRE_DATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="JOB_ID" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SALARY" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <column name="COMMISSION_PCT" sqlType="DECIMAL" precision="2" scale="2" nullable="true" jdbcType="3"/>
+      <column name="MANAGER_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DEPARTMENT_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="EMPLOYEE_ID"/>
+      <foreign-key name="employees_ibfk_2" columns="DEPARTMENT_ID" ref-table="departments" ref-schema="" ref-catalog="zth_16" ref-columns="DEPARTMENT_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="employees_ibfk_3" columns="MANAGER_ID" ref-table="employees" ref-schema="" ref-catalog="zth_16" ref-columns="EMPLOYEE_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="employees_ibfk_4" columns="JOB_ID" ref-table="jobs" ref-schema="" ref-catalog="zth_16" ref-columns="JOB_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="employees_ibfk_3" table="employees" schema="" catalog="zth_16" columns="MANAGER_ID"/>
+    </table>
+    <table name="jobs" schema="" catalog="zth_16" type="TABLE">
+      <column name="JOB_ID" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="JOB_TITLE" sqlType="VARCHAR" precision="35" scale="0" nullable="false" jdbcType="12"/>
+      <column name="MIN_SALARY" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="MAX_SALARY" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="JOB_ID"/>
+      <exported-key name="employees_ibfk_4" table="employees" schema="" catalog="zth_16" columns="JOB_ID"/>
+    </table>
+    <table name="locations" schema="" catalog="zth_16" type="TABLE">
+      <column name="LOCATION_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="STREET_ADDRESS" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="POSTAL_CODE" sqlType="VARCHAR" precision="12" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CITY" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="STATE_PROVINCE" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="LOCATION_ID"/>
+      <exported-key name="departments_ibfk_1" table="departments" schema="" catalog="zth_16" columns="LOCATION_ID"/>
+    </table>
+    <table name="view_employee_dep" schema="" catalog="zth_16" type="VIEW">
+      <column name="EMPLOYEE_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="FIRST_NAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DEPARTMENT_NAME" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+    </table>
+  </data-source>
+</component>
